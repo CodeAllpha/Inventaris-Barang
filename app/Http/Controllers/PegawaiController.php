@@ -115,14 +115,14 @@ class PegawaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pegawai $pegawai, $id)
+    public function update(Request $request, $id)
     {
 
         $validator = Validator::make($request->all(), [
             'nama_pegawai' => 'required|max:40|regex:/^[a-zA-ZÑñ\s\.]+$/',
-            'username' => 'required|string|max:40|unique:pegawais,username'.$pegawai->id,
+            'username' => "required|string|max:40|unique:pegawais,username,$id",
             'password'=> 'required|min:3|confirmed',
-            'nip' => 'required|integer|max:40|unique:pegawais,nip'.$pegawai->id,
+            'nip' => "required|integer|max:40|unique:pegawais,nip,$id",
             'alamat' => 'required|string|max:150',
         ]);
 

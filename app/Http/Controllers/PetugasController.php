@@ -113,12 +113,12 @@ class PetugasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Petugas $petugas, $id)
+    public function update(Request $request, $id)
     {
 
         $validator = Validator::make($request->all(), [
             'nama_petugas' => 'required|max:40|regex:/^[a-zA-ZÑñ\s\.]+$/',
-            'username' => 'required|string|max:40|unique:petugas,username'.$petugas->id,
+            'username' => "required|string|max:40|unique:petugas,username,$id",
             'password'=> 'required|confirmed|min:3',
         ]);
 

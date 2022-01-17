@@ -194,7 +194,7 @@
             </div>
             <div class="form-group">
                 <label for="password" class="form-control-label text-uppercase opacity-7">Password</label>
-                <input  type="password"
+                <input  type="text"
                         name="password"
                         value="{{old('password') ? old('password') : $peg->password}}"
                         class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password.."/>
@@ -202,7 +202,7 @@
             </div>
             <div class="form-group">
               <label for="password_confirmation" class="form-control-label text-uppercase opacity-7">Confirm Password</label>
-              <input  type="password"
+              <input  type="text"
                       name="password_confirmation"
                       class="form-control @error('password_confirmation') is-invalid @enderror" 
                       value="{{old('password') ? old('password') : $peg->password}}"

@@ -126,7 +126,7 @@
         </div>
         <div class="form-group">
             <label for="kode_jenis" class="form-control-label text-uppercase opacity-7">Kode Jenis</label>
-            <input  type="text"
+            <input  type="text"z
                     name="kode_jenis"
                     value="{{ old('kode_jenis') }}"
                     class="form-control @error('kode_jenis') is-invalid @enderror" placeholder="Masukan Kode Jenis...."/>
