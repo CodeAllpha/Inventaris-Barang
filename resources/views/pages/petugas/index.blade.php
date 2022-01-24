@@ -73,11 +73,18 @@
             {{-- <td class="align-middle text-center">
                 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('petugas.edit',$peg->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
             </td> --}}
+            <td class="align-middle text-center">
+              <a class="btn btn-link text-dark px-3 mb-0" href="#petugas"
+              data-remote="{{ route('petugas.show',$petugaes->id) }}" data-toggle="modal" data-target="#petugas"
+              data-title="Petugas Detail"><i class="fas fa-eye text-dark me-2" aria-hidden="true"></i>Show</a>
+          </td>
             <td class="align-middle">
-                <a class="btn btn-link text-danger text-gradient px-3 mb-0" 
-                data-target="#petugasdelete{{ $petugaes->id }}"
-                data-toggle="modal"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                </a>
+               @if ($petugaes->level != 'admin')
+               <a class="btn btn-link text-danger text-gradient px-3 mb-0" 
+               data-target="#petugasdelete{{ $petugaes->id }}"
+               data-toggle="modal"><i class="far fa-trash-alt me-2"></i>Delete</a>
+               </a>
+               @endif
             </td>
             </tr>
             
@@ -136,6 +143,14 @@
                       @error('username') <div class="text-muted">{{ $message }}</div> @enderror
           </div>
           <div class="form-group">
+            <label for="nomor_hp" class="form-control-label text-uppercase opacity-7">Nomor Hp</label>
+            <input  type="text"
+                    name="nomor_hp"
+                    value="{{ old('nomor_hp') }}"
+                    class="form-control @error('nomor_hp') is-invalid @enderror" placeholder="Masukan Nomor Hp...."/>
+                    @error('nomor_hp') <div class="text-muted">{{ $message }}</div> @enderror
+        </div>
+          {{-- <div class="form-group">
               <label for="password" class="form-control-label text-uppercase opacity-7">Password</label>
               <input  type="password"
                       name="password"
@@ -148,7 +163,30 @@
                       name="password_confirmation"
                       class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Ulangi Password.."/>
                       @error('password_confirmation') <div class="text-muted">{{ $message }}</div> @enderror
-          </div>
+          </div> --}}
+
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password" class="form-control-label text-uppercase opacity-7">Password</label>
+                    <input  type="password"
+                    name="password"
+                    class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password.."/>
+                    @error('password') <div class="text-muted">{{ $message }}</div> @enderror
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-control-label text-uppercase opacity-7">Confirm Password</label>
+        <input  type="password"
+                name="password_confirmation"
+                class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Ulangi Password.."/>
+                @error('password_confirmation') <div class="text-muted">{{ $message }}</div> @enderror
+                </div>
+            </div>
+        </div>
           <div class="form-group d-grid py-2 ">
               <button type="submit" class="btn btn-primary ">
                   Tambah Petugas Baru
@@ -193,6 +231,14 @@
                         @error('username') <div class="text-muted">{{ $message }}</div> @enderror
             </div>
             <div class="form-group">
+              <label for="nomor_hp" class="form-control-label text-uppercase opacity-7">Nomor Hp</label>
+              <input  type="text"
+                      name="nomor_hp"
+                      value="{{ old('nomor_hp') ? old('nomor_hp') : $peg->nomor_hp }}"
+                      class="form-control @error('nomor_hp') is-invalid @enderror" placeholder="Masukan Nomor Hp...."/>
+                      @error('nomor_hp') <div class="text-muted">{{ $message }}</div> @enderror
+          </div>
+            {{-- <div class="form-group">
                 <label for="password" class="form-control-label text-uppercase opacity-7">Password</label>
                 <input  type="text"
                         name="password"
@@ -208,7 +254,32 @@
                       value="{{old('password') ? old('password') : $peg->password}}"
                       placeholder="Ulangi Password.."/>
                       @error('password_confirmation') <div class="text-muted">{{ $message }}</div> @enderror
-          </div>
+          </div> --}}
+
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password" class="form-control-label text-uppercase opacity-7">Password</label>
+                    <input  type="password"
+                    name="password"
+                    value="{{old('password') ? old('password') : $peg->password}}"
+                    class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password.."/>
+                    @error('password') <div class="text-muted">{{ $message }}</div> @enderror
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-control-label text-uppercase opacity-7">Confirm Password</label>
+        <input  type="password"
+                name="password_confirmation"
+                value="{{old('password') ? old('password') : $peg->password}}"
+                class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Ulangi Password.."/>
+                @error('password_confirmation') <div class="text-muted">{{ $message }}</div> @enderror
+                </div>
+            </div>
+        </div>
             <div class="form-group d-grid ">
                 <button type="submit" class="btn btn-primary ">
                     Update Petugas
@@ -242,6 +313,24 @@
           </div>
     </form>
   </div>
+
+     <!--Modal Show Petugas-->
+<div class="modal fade" id="petugas" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title"></h5>
+              <h5 type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                <span aria-hidden="true">&times;</span>
+              </h5>
+          </div>
+          <div class="modal-body">
+            <i class="fa fa-spinner fa-spin"></i>
+        
+          </div>
+      </div>
+  </div>
+</div>
 
 
 @endforeach

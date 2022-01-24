@@ -53,32 +53,38 @@ class PeminjamanController extends Controller
      */
     public function store($id)
     {   
-        $inventaris = Inventaris::all();
 
-        $cek = \DB::table('inventaris')->where('id',$id)->where('jumlah','>',0)->count();
-            if($cek > 0) {
 
-                \DB::table('peminjaman')->insert([
-                    'nama_barang'=> $id,
-                    'peminjam' => \Auth::user()->username,
-                    'status_peminjaman' => 'PENDING',
-                    'tanggal_pinjam' => date('Y-m-d'),
-                    // 'tanggal_kembali' => date('Y-m-d'),
-                ]);
+        
+
+
+
+        
+        
+        // $cek = \DB::table('inventaris')->where('id',$id)->where('jumlah','>',0)->count();
+        //     if($cek > 0) {
+
+        //         \DB::table('peminjaman')->insert([
+        //             'nama_barang'=> $id,
+        //             'peminjam' => \Auth::user()->username,
+        //             'status_peminjaman' => 'PENDING',
+        //             'tanggal_pinjam' => Carbon::now()->addYears(5),
+        //             // 'tanggal_kembali' => date('Y-m-d'),
+        //         ]);
               
-        $inventaris = \DB::table('inventaris')->where('id',$id)->first();
-        $stok_now = $inventaris->jumlah;
-        $stok_new = $stok_now - 1;
+        // $inventaris = \DB::table('inventaris')->where('id',$id)->first();
+        // $stok_now = $inventaris->jumlah;
+        // $stok_new = $stok_now - 1;
             
         
-        \DB::table('inventaris')->where('id',$id)->update([      
-            'jumlah'=>$stok_new
-        ]);
-                return redirect()->route('pages.peminjaman.index');
-            }else{
+        // \DB::table('inventaris')->where('id',$id)->update([      
+        //     'jumlah'=>$stok_new
+        // ]);
+        //         return redirect()->route('pages.peminjaman.index');
+        //     }else{
                
-                return redirect()->route('pages.peminjaman.index');
-            }
+        //         return redirect()->route('pages.peminjaman.index');
+        //     }
 
         
     }

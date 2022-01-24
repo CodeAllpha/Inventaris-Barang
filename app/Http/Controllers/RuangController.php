@@ -51,7 +51,7 @@ class RuangController extends Controller
         $validator = Validator::make($request->all(), [
             'nama_ruang' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
             'kode_ruang' => 'required|string|min:5|max:5|unique:ruang',
-            'keterangan'=> 'required|string|max:40'
+            'keterangan'=> 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
         ]);
 
 

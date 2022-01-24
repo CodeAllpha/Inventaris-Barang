@@ -16,6 +16,7 @@ class Petugas extends Authenticatable
         'nama_petugas',
         'username',
         'level',
+        'nomor_hp',
     ];
 
     protected $hidden = [

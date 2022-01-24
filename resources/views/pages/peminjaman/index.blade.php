@@ -50,7 +50,7 @@ Peminjaman
                         </td>
                         <td>
                           <p class="text-sm font-weight-bold mb-0">{{ $pinjam->ruang->nama_ruang }}</p>
-                          <p class="text-xs text-secondary mb-0">Petugas : {{ $pinjam->petugas->nama_petugas }}</p>
+                          {{-- <p class="text-xs text-secondary mb-0">Petugas : {{ $pinjam->petugas->nama_petugas }}</p> --}}
                           <p class="text-xs text-secondary mb-0">Kode Ruang : {{ $pinjam->ruang->kode_ruang }}</p>
                           
                         </td>
@@ -61,19 +61,20 @@ Peminjaman
                         <td>
                             <p class="text-sm font-weight-bold mb-0">{{ $pinjam->keterangan }}</p>
                             <p class="text-xs text-secondary mb-0">Kode Barang {{ $pinjam->kode_inventaris }}</p>
+                           
                         </td>
-                        {{-- <td class="align-middle">
+                        <td class="align-middle">
                           <a href="#peminjamancreate" data-toggle="modal"
                              data-target="#peminjamancreate" class="text-dark font-weight-bold text-xs" data-toggle="tooltip">
                             <i class="fas fa-newspaper me-2"></i>Pinjam Barang
                           </a>
-                        </td> --}}
-                        <td class="align-middle">
+                        </td>
+                        {{-- <td class="align-middle">
                           <a href="{{ route('peminjaman.store',$pinjam->id) }}" 
                            class="text-dark font-weight-bold text-xs" data-toggle="tooltip">
                             <i class="fas fa-newspaper me-2"></i>Pinjam Barang
                           </a>
-                        </td>
+                        </td> --}}
                       </tr>
                     
                     </tbody>
@@ -107,14 +108,30 @@ Peminjaman
           <form action="# method="POST">
               @csrf
               @foreach ($inventaris as $item)
-            
               <div class="form-group">
                 <label for="disabledTextInput"class="form-control-label text-uppercase opacity-7">
                 Nama Barang</label>
                 <input type="text" disabled id="disabledTextInput" class="form-control" placeholder="{{ $item->nama }}">
-            </div>
-             
+              </div>
               @endforeach
+               <div class="form-group">
+              <label for="jumlah_pinjam" class="form-control-label text-uppercase opacity-7">Jumlah Pinjam</label>
+              <input  type="text"
+                      name="jumlah_pinjam"
+                      value="{{ old('jumlah_pinjam') }}"
+                      class="form-control @error('jumlah_pinjam') is-invalid @enderror" placeholder="Masukan Jumlah Pinjam..">
+                      @error('jumlah_pinjam') <div class="text-muted">{{ $message }}</div> @enderror
+              </div>
+              {{-- <div class="form-group">
+              <label for="tanggal_kembali" class="form-control-label text-uppercase opacity-7">Lama Peminjaman</label>
+              <input  type="text"
+                      name="tanggal_kembali"
+                      value="{{ old('tanggal_kembali') }}"
+                      class="form-control @error('tanggal_kembali') is-invalid @enderror" placeholder="Masukan Lama Peminjaman..">
+                      @error('tanggal_kembali') <div class="text-muted">{{ $message }}</div> @enderror
+              </div> --}}
+
+
               <div class="form-group d-grid py-2 ">
                   <button type="submit" class="btn btn-primary ">
                       Pinjam Barang

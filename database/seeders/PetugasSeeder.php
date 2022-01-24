@@ -19,6 +19,7 @@ class PetugasSeeder extends Seeder
         DB::table('petugas')->insert([
             'nama_petugas' => 'Allpha',
             'username' => 'Allpha',
+            'nomor_hp' => '082329547489',
             'level' => 'admin',
             'password' => bcrypt('AllphaChan06'),
             'remember_token' => Str::random(10),

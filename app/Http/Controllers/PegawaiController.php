@@ -54,8 +54,8 @@ class PegawaiController extends Controller
             'nama_pegawai' => 'required|max:40|regex:/^[a-zA-ZÑñ\s\.]+$/',
             'username' => 'required|string|max:40|unique:pegawais',
             'password'=> 'required|min:3|confirmed',
-            'nip' => 'required|integer|max:40|unique:pegawais',
-            'alamat' => 'required|string|max:150',
+            'nip' => 'nullable|integer|max:40|unique:pegawais',
+            'alamat' => 'nullable|string|max:150',
         ]);
 
 
@@ -101,11 +101,11 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        $pegawai = Pegawai::findorFail($id);
+        // $pegawai = Pegawai::findorFail($id);
 
-        return view('pages.pegawai.update')->with([
-            'pegawai' => $pegawai
-        ]);
+        // return view('pages.pegawai.update')->with([
+        //     'pegawai' => $pegawai
+        // ]);
     }
 
     /**

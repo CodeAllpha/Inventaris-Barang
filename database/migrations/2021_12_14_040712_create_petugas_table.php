@@ -17,6 +17,7 @@ class CreatePetugasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_petugas',70);
             $table->string('username',70)->unique();
+            $table->string('nomor_hp')->nullable(); 
             $table->enum('level',['admin','operator'])->default('operator');
             $table->string('password');
             $table->rememberToken();

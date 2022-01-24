@@ -74,9 +74,9 @@ public function store(Request $request)
 {
 
     $validator = Validator::make($request->all(), [
-        'nama' => 'required|string|max:50',
-        'kondisi' => 'required|string|max:50',
-        'keterangan' => 'required|string|max:50',
+        'nama' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
+        'kondisi' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
+        'keterangan' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
         'jumlah' => 'required|integer|min:1|max:100',
         'kode_inventaris' => 'required|min:5|max:5|unique:inventaris',
         'tanggal_register' => 'required|date',
@@ -181,9 +181,9 @@ public function update(Request $request, $id)
     $inventaris = Inventaris::with(['Jenis','Ruang','Petugas'])->get();
 
     $validator = Validator::make($request->all(), [
-        'nama' => 'required|string|max:50',
-        'kondisi' => 'required|string|max:50',
-        'keterangan' => 'required|string|max:50',
+        'nama' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
+        'kondisi' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
+        'keterangan' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
         'jumlah' => 'required|integer|min:1|max:100',
         'kode_inventaris' => "required|min:5|max:5|unique:inventaris,kode_inventaris,$id",
         'tanggal_register' => 'required|date',

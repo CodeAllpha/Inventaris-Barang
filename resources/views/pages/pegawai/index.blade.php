@@ -145,11 +145,15 @@
                     </div>
                         <div class="form-group">
                             <label for="alamat" class="form-control-label text-uppercase opacity-7">Alamat</label>
-                            <textarea class="form-control" placeholder="Masukan Alamat Anda..." name="alamat"
-                            @error('alamat') is-invalid @enderror></textarea>
+                           
+                            <textarea class="form-control
+                            @error('alamat') is-invalid @enderror" placeholder="Masukan Alamat Anda..." name="alamat">{{ old('alamat') }}</textarea>
+                            
                             @error('alamat') <div class="text-muted">{{$message}}</div> @enderror
                         </div>
-                        <div class="form-group">
+                           
+                          
+                        {{-- <div class="form-group">
                             <label for="password" class="form-control-label text-uppercase opacity-7">Password</label>
                             <input  type="password"
                                     name="password"
@@ -162,6 +166,29 @@
                                     name="password_confirmation"
                                     class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Ulangi Password.."/>
                                     @error('password_confirmation') <div class="text-muted">{{ $message }}</div> @enderror
+                            </div> --}}
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password" class="form-control-label text-uppercase opacity-7">Password</label>
+                                        <input  type="password"
+                                        name="password"
+                                        class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password.."/>
+                                        @error('password') <div class="text-muted">{{ $message }}</div> @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password_confirmation" class="form-control-label text-uppercase opacity-7">Confirm Password</label>
+                            <input  type="password"
+                                    name="password_confirmation"
+                                    class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Ulangi Password.."/>
+                                    @error('password_confirmation') <div class="text-muted">{{ $message }}</div> @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group d-grid ">
                                 <button type="submit" class="btn btn-primary">

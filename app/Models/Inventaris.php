@@ -43,4 +43,9 @@ class Inventaris extends Model
     {
         return $this->belongsTo('\App\Models\Petugas', 'id_petugas', 'id');
     }
+    public function peminjaman()
+    {
+        return $this->hasMany('\App\Models\Peminjaman', 'id_peminjaman', 'id');
+    }
+
 }

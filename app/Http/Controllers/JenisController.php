@@ -53,7 +53,7 @@ class JenisController extends Controller
         $validator = Validator::make($request->all(), [
             'nama_jenis' => 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
             'kode_jenis' => 'required|string|min:5|max:5|unique:jenis',
-            'keterangan'=> 'required|string|max:40'
+            'keterangan'=> 'required|max:40|regex:/^[a-zA-ZÑñ\s]+$/',
         ]);
 
 

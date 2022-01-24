@@ -14,6 +14,10 @@
       <td>{{$pegawai->nip}}</td>
     </tr>
     <tr>
+      <th scope="row">Nomor Hp</th>
+      <td>{{$pegawai->nomor_hp}}</td>
+    </tr>
+    <tr>
       <th scope="row">Alamat</th>
       <td>{{$pegawai->alamat}}</td>
     </tr>

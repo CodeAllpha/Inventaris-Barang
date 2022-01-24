@@ -29,7 +29,7 @@ Route::group([
     'prefix' => config('invensa.prefix')
 ], function(){
     Route::get('login','LoginPetugasController@formLogin')->name('petugas.login');
-    Route::post('login','LoginPetugasController@login');
+    Route::post('login','LoginPetugasController@login')->name('login');
     Route::middleware(['auth:petugas'])->group(function () {
     Route::post('logout','LoginPetugasController@logout')->name('petugas.logout');
     Route::view('/','pages.statistik.dashboard')->name('petugas.dashboard');
@@ -48,6 +48,8 @@ Route::group([
     ->name('petugas.update');
     Route::get('/petugas/{id}', [PetugasController::class, 'destroy'])
     ->name('petugas.destroy');
+    Route::get('/petugas/show/{id}', [PetugasController::class, 'show'])
+    ->name('petugas.show');
 
     //Section Jenis
     Route::get('/jenis', [JenisController::class, 'index'])

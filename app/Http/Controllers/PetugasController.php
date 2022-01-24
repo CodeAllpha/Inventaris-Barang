@@ -57,6 +57,7 @@ class PetugasController extends Controller
             'nama_petugas' => 'required|max:40|regex:/^[a-zA-ZÑñ\s\.]+$/',
             'username' => 'required|string|max:40|unique:petugas',
             'password'=> 'required|confirmed|min:3',
+            'nomor_hp' => 'nullable|digits_between:11,13',
         ]);
 
 
@@ -73,6 +74,7 @@ class PetugasController extends Controller
         $petugas = new Petugas();
         $petugas->nama_petugas = $request->nama_petugas;
         $petugas->username = $request->username;
+        $petugas->nomor_hp = $request->nomor_hp;
         $petugas->level = 'operator';
         $petugas->password = bcrypt($request->password);
         $petugas->save();
@@ -88,7 +90,11 @@ class PetugasController extends Controller
      */
     public function show($id)
     {
-        //
+        $petugas = Petugas::findorFail($id);
+
+        return view('pages.petugas.show')->with([
+            'petugas' => $petugas
+        ]);
     }
 
     /**
@@ -119,6 +125,7 @@ class PetugasController extends Controller
         $validator = Validator::make($request->all(), [
             'nama_petugas' => 'required|max:40|regex:/^[a-zA-ZÑñ\s\.]+$/',
             'username' => "required|string|max:40|unique:petugas,username,$id",
+            'nomor_hp' => "nullable|digits_between:11,13,$id",
             'password'=> 'required|confirmed|min:3',
         ]);
 

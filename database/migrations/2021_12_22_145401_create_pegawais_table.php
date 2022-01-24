@@ -18,6 +18,7 @@ class CreatePegawaisTable extends Migration
             $table->string('nama_pegawai',70);
             $table->string('username',70)->unique();
             $table->char('nip',40)->nullable();
+            $table->string('nomor_hp')->nullable();
             $table->string('alamat')->nullable();
             $table->string('password');
             $table->timestamps();
