@@ -120,29 +120,51 @@
             <div class="modal-body">
                 <form action="{{ route('pegawai.store') }}" method="POST" >
                     @csrf
-                    <div class="form-group">
-                        <label for="nama_pegawai" class="form-control-label text-uppercase opacity-7">Nama Pegawai</label>
-                        <input  type="text"
-                                name="nama_pegawai"
-                                value="{{ old('nama_pegawai') }}"
-                                class="form-control @error('nama_pegawai') is-invalid @enderror" placeholder="Masukan Nama Pegawai...."/>
-                                @error('nama_pegawai') <div class="text-muted">{{ $message }}</div> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="form-control-label text-uppercase opacity-7">Username</label>
-                        <input  type="text"
-                                name="username"
-                                value="{{ old('username') }}"
-                                class="form-control @error('username') is-invalid @enderror" placeholder="Masukan Username...."/>
-                                @error('username') <div class="text-muted">{{ $message }}</div> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="nip" class="form-control-label text-uppercase opacity-7">Nip</label>
-                        <input  type="text"
-                                name="nip"
-                                class="form-control @error('nip') is-invalid @enderror" placeholder="Masukan Nip.."/>
-                                @error('nip') <div class="text-muted">{{ $message }}</div> @enderror
-                    </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nama_pegawai" class="form-control-label text-uppercase opacity-7">Nama Pegawai</label>
+                            <input  type="text"
+                                    name="nama_pegawai"
+                                    value="{{ old('nama_pegawai') }}"
+                                    class="form-control @error('nama_pegawai') is-invalid @enderror" placeholder="Masukan Nama Pegawai...."/>
+                                    @error('nama_pegawai') <div class="text-muted">{{ $message }}</div> @enderror
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username" class="form-control-label text-uppercase opacity-7">Username</label>
+                            <input  type="text"
+                                    name="username"
+                                    value="{{ old('username') }}"
+                                    class="form-control @error('username') is-invalid @enderror" placeholder="Masukan Username...."/>
+                                    @error('username') <div class="text-muted">{{ $message }}</div> @enderror
+                        </div>
+                      </div>
+                  </div>
+                 
+                   <div class="row">
+                       <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nip" class="form-control-label text-uppercase opacity-7">Nip</label>
+                            <input  type="text"
+                                    name="nip"
+                                    class="form-control @error('nip') is-invalid @enderror" placeholder="Masukan Nip.."/>
+                                    @error('nip') <div class="text-muted">{{ $message }}</div> @enderror
+                        </div>
+                       </div>
+                       <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nomor_hp" class="form-control-label text-uppercase opacity-7">Nomor Hp</label>
+                            <input  type="text"
+                                    name="nomor_hp"
+                                    value="{{ old('nomor_hp') }}"
+                                    class="form-control @error('nomor_hp') is-invalid @enderror" placeholder="Masukan Nomor Hp...."/>
+                                    @error('nomor_hp') <div class="text-muted">{{ $message }}</div> @enderror
+                        </div>
+                       </div>
+                   </div>
+                 
                         <div class="form-group">
                             <label for="alamat" class="form-control-label text-uppercase opacity-7">Alamat</label>
                            
@@ -219,22 +241,29 @@
         <div class="modal-body">
             <form action="{{ route('pegawai.update',$data->id) }}" method="PUT">
                 @csrf
-                <div class="form-group">
-                    <label for="nama_pegawai" class="form-control-label text-uppercase opacity-7">Nama Pegawai</label>
-                    <input  type="text"
-                            name="nama_pegawai"
-                            value="{{old('nama_pegawai') ? old('nama_pegawai') : $data->nama_pegawai}}"
-                            class="form-control @error('nama_pegawai') is-invalid @enderror" placeholder="Masukan Nama Petugas...."/>
-                            @error('nama_pegawai') <div class="text-muted">{{ $message }}</div> @enderror
-                </div>
-                <div class="form-group">
-                    <label for="username" class="form-control-label text-uppercase opacity-7">Username</label>
-                    <input  type="text"
-                            name="username"
-                            value="{{old('username') ? old('username') : $data->username}}"
-                            class="form-control @error('username') is-invalid @enderror" placeholder="Masukan Username...."/>
-                            @error('username') <div class="text-muted">{{ $message }}</div> @enderror
-                </div>
+             <div class="row">
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nama_pegawai" class="form-control-label text-uppercase opacity-7">Nama Pegawai</label>
+                        <input  type="text"
+                                name="nama_pegawai"
+                                value="{{old('nama_pegawai') ? old('nama_pegawai') : $data->nama_pegawai}}"
+                                class="form-control @error('nama_pegawai') is-invalid @enderror" placeholder="Masukan Nama Petugas...."/>
+                                @error('nama_pegawai') <div class="text-muted">{{ $message }}</div> @enderror
+                    </div>
+                 </div>
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="username" class="form-control-label text-uppercase opacity-7">Username</label>
+                        <input  type="text"
+                                name="username"
+                                value="{{old('username') ? old('username') : $data->username}}"
+                                class="form-control @error('username') is-invalid @enderror" placeholder="Masukan Username...."/>
+                                @error('username') <div class="text-muted">{{ $message }}</div> @enderror
+                    </div>
+                 </div>
+             </div>
+              
                 <div class="form-group">
                     <label for="nip" class="form-control-label text-uppercase opacity-7">Nip</label>
                     <input  type="text"

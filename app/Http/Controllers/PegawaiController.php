@@ -21,6 +21,8 @@ class PegawaiController extends Controller
 
             $pegawai = Pegawai::where('nama_pegawai','LIKE','%' .$request->search.'%')
                     ->orWhere('username','LIKE','%' .$request->search.'%')
+                    ->orWhere('nip','LIKE','%' .$request->search.'%')
+                    ->orWhere('alamat','LIKE','%' .$request->search.'%')
                     ->paginate(10);
         }else{
             $pegawai = Pegawai::paginate(10);
@@ -56,6 +58,7 @@ class PegawaiController extends Controller
             'password'=> 'required|min:3|confirmed',
             'nip' => 'nullable|integer|max:40|unique:pegawais',
             'alamat' => 'nullable|string|max:150',
+            'nomor_hp' => 'nullable|digits_between:10,13',
         ]);
 
 
@@ -73,6 +76,7 @@ class PegawaiController extends Controller
         $pegawai->username = $request->username;
         $pegawai->nip = $request->nip;
         $pegawai->alamat = $request->alamat;
+        $pegawai->nomor_hp = $request->nomor_hp;
         $pegawai->password = bcrypt($request->password);
         $pegawai->save();
 

@@ -23,6 +23,7 @@ class PetugasController extends Controller
 
             $petugas = Petugas::where('nama_petugas','LIKE','%' .$request->search.'%')
                     ->orWhere('username','LIKE','%' .$request->search.'%')
+                    ->orWhere('nomor_hp','LIKE','%' .$request->search.'%')
                     ->paginate(10);
         }else{
             $petugas = Petugas::paginate(10);
